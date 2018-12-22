@@ -20,7 +20,7 @@ function onClickRemove (item) {
         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', width: 200}} key={item.type}>
           
           <div style={{width: 150}}><p style={{fontSize: 15}}>{item.type} ({item.yearRange})</p></div>
-          <button style={{height: 20, width: 20}} onClick={(e) => onClickRemove(item)}>-</button>
+          <button style={{height: 20, width: 20}} disabled={item.count<= 1}onClick={(e) => onClickRemove(item)}>-</button>
           <p style={{fontSize: 15}}>{item.count}</p>
           <button style={{height: 20, width: 20}} onClick={(e) => onClickAdd(item)}>+</button>
         </div>))
