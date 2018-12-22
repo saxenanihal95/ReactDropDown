@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import DropDown from './DropDown';
+import { connect } from 'react-redux';
 
 class App extends Component {
   constructor() {
@@ -53,5 +52,11 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+      dropDown: state
+  }
+}
+export default connect(mapStateToProps)(App);
 
-export default App;
+// export default App;
