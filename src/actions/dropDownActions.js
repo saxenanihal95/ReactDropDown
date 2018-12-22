@@ -1,3 +1,7 @@
-function updateDropDownState() {
-    return {type: 'UPDATE_DROPDOWN_STATE', payload: {listOpen: !listOpen}};
+export function toggleList() {
+    return {type: 'TOGGLE_LIST'};
+}
+
+export function updateItemCount(count, type) {
+    return {type: 'UPDATE_ITEM_COUNT', payload: {count,type}};
 }
