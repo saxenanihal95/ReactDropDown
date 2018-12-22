@@ -7,6 +7,11 @@ const initState = {
 
 
 const dropDownReducer = (state = initState, action) => {
-    return state;    
+    switch(action.type) {
+        case 'UPDATE_DROPDOWN_STATE':
+            return {...state, ...action.payload};
+        default:
+            return state;
+    }    
 }
 export default dropDownReducer;

@@ -3,37 +3,14 @@ import DropDown from './DropDown';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      adultCount: 1,
-      childCount: 1,
-      babyCount: 1,
-      listOpen: false,
-    };
-  }
 
   toggleListDisplay = (e) => {
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen
-    }))
-  }
-
-  onClickAdd = (e) => {
-    this.setState(prevState => ({
-      adultCount: prevState.adultCount+1,
-    }))
-  }
-
-  onClickRemove = (e) => {
-    console.log(this.text);
-    this.setState(prevState => ({
-      adultCount: prevState.adultCount-1,
-    }))
+    const { listOpen } = this.props.dropDown;
+    this.props.dispatch({type: 'UPDATE_DROPDOWN_STATE', payload: {listOpen: !listOpen}});
   }
 
   render() {
-    const {adultCount, childCount, babyCount, listOpen} = this.state;
+    const {adultCount, childCount, babyCount, listOpen} = this.props.dropDown;
     const displayText = `${adultCount} Adult ${childCount} Child ${babyCount} Baby`;
     const list = [
       {text: 'Adults(+12 years)', count: adultCount, onClickAdd:this.onClickAdd, onClickRemove: this.onClickRemove },
