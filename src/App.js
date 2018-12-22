@@ -42,7 +42,7 @@ class App extends Component {
       {text: 'Babies(-2 years)', count: babyCount}
     ]
     return (
-      <div className="App">
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 20}}>
         <div style={{display: 'flex', flexDirection: 'column'}}>
           <button style={{width: 200}} onClick={this.toggleListDisplay}>{displayText}</button>
           {listOpen && 
