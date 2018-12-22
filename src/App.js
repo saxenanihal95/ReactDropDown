@@ -13,7 +13,7 @@ class App extends Component {
     const {adultCount, childCount, babyCount, listOpen} = this.props.dropDown;
     const displayText = `${adultCount} Adult ${childCount} Child ${babyCount} Baby`;
     const list = [
-      {text: 'Adults(+12 years)', count: adultCount, onClickAdd:this.onClickAdd, onClickRemove: this.onClickRemove },
+      {text: 'Adults(+12 years)', count: adultCount},
       {text: 'Children(2-11 years)', count: childCount}, 
       {text: 'Babies(-2 years)', count: babyCount}
     ]
