@@ -1,29 +1,28 @@
 import React from 'react';
-import { updateItemCount } from './actions/dropDownActions';
+import { increaseCount, decreaseCount } from './actions/dropDownActions';
 
 
 
 const DropDown = (props) => {
 
 
-function onClickAdd (item) {
-  const count = item.count+1;
-  props.dispatch(updateItemCount(count, item.type));
+function onClickAdd (type) {
+  props.dispatch(increaseCount(type));
 }
 
-function onClickRemove (item) {
-  const count = item.count-1;
-  props.dispatch(updateItemCount(count, item.type));
+function onClickRemove (type) {
+  props.dispatch(decreaseCount(type));
 }
-    
-    return props.list.map(item => (
-        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', width: 200}} key={item.type}>
+    return Object.keys(props.list).map(type => {
+        
+        const { count, yearRange, addDisabled, removeDisabled } = props.list[type];
+        return (<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', width: 200}} key={type}>
           
-          <div style={{width: 150}}><p style={{fontSize: 15}}>{item.type} ({item.yearRange})</p></div>
-          <button style={{height: 20, width: 20}} disabled={item.count<= 1}onClick={(e) => onClickRemove(item)}>-</button>
-          <p style={{fontSize: 15}}>{item.count}</p>
-          <button style={{height: 20, width: 20}} onClick={(e) => onClickAdd(item)}>+</button>
-        </div>))
+          <div style={{width: 150}}><p style={{fontSize: 15}}>{type} ({yearRange})</p></div>
+          <button style={{height: 20, width: 20}} disabled={removeDisabled} onClick={(e) => onClickRemove(type)}>-</button>
+          <p style={{fontSize: 15}}>{count}</p>
+          <button style={{height: 20, width: 20}} disabled={addDisabled} onClick={(e) => onClickAdd(type)}>+</button>
+    </div>)})
 }
 
 export default DropDown;

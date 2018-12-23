@@ -9,8 +9,7 @@ class App extends Component {
   
 
   render() {
-    const {itemList, listOpen} = this.props.dropDown;
-    const displayText = itemList.map(item => item.displayText).join(', ');
+    const {itemList, listOpen, displayText} = this.props.dropDown;
     return (
       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 20}}>
         <div style={{display: 'flex', flexDirection: 'column'}}>
