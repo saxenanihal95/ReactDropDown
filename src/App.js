@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import DropDown from "./DropDown";
+import DropDownList from "./components/DropDownList";
+import DropDownButton from './components/DropDownButton';
 import { connect } from "react-redux";
 import { toggleList } from "./actions/dropDownActions";
 
@@ -17,19 +18,9 @@ class App extends Component {
           margin: 20
         }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <button
-            style={{
-              width: 250,
-              height: 40,
-              color: "white",
-              backgroundColor: "black",
-              border: "none"
-            }}
-            onClick={this.toggleListDisplay}>
-            {displayText}
-          </button>
+          <DropDownButton onClick={this.toggleListDisplay} text={displayText} />
           {listOpen && (
-            <DropDown list={itemList} dispatch={this.props.dispatch} />
+            <DropDownList list={itemList} dispatch={this.props.dispatch} />
           )}
         </div>
       </div>

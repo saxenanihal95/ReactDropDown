@@ -1,8 +1,8 @@
 import React from "react";
-import { increaseCount, decreaseCount } from "./actions/dropDownActions";
+import { increaseCount, decreaseCount } from "../actions/dropDownActions";
 import Button from "./Button";
 
-const DropDown = props => {
+const DropDownList = props => {
   function onClickAdd(type) {
     props.dispatch(increaseCount(type));
   }
@@ -44,4 +44,4 @@ const DropDown = props => {
   });
 };
 
-export default DropDown;
+export default DropDownList;
