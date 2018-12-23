@@ -1,5 +1,6 @@
 import React from "react";
 import { increaseCount, decreaseCount } from "./actions/dropDownActions";
+import Button from "./Button";
 
 const DropDown = props => {
   function onClickAdd(type) {
@@ -12,32 +13,32 @@ const DropDown = props => {
   return Object.keys(props.list).map(type => {
     const { count, yearRange, addDisabled, removeDisabled } = props.list[type];
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          width: 200
-        }}
-        key={type}>
-        <div style={{ width: 150 }}>
-          <p style={{ fontSize: 15 }}>
-            {type} ({yearRange})
-          </p>
+      <div style={{ width: 250 }} key={type}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            borderStyle: "solid",
+            padding: 5
+          }}>
+          <div style={{ width: 200 }}>
+            <p style={{ fontSize: 15 }}>
+              {type} ({yearRange})
+            </p>
+          </div>
+          <Button
+            onClick={e => onClickRemove(type)}
+            text="-"
+            disabled={removeDisabled}
+          />
+          <p style={{ fontSize: 15 }}>{count}</p>
+          <Button
+            onClick={e => onClickAdd(type)}
+            text="+"
+            disabled={addDisabled}
+          />
         </div>
-        <button
-          style={{ height: 20, width: 20 }}
-          disabled={removeDisabled}
-          onClick={e => onClickRemove(type)}>
-          -
-        </button>
-        <p style={{ fontSize: 15 }}>{count}</p>
-        <button
-          style={{ height: 20, width: 20 }}
-          disabled={addDisabled}
-          onClick={e => onClickAdd(type)}>
-          +
-        </button>
       </div>
     );
   });
